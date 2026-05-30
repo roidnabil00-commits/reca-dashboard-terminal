@@ -1,13 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
+const AuditLog = dynamic(() => import('./AuditLog'), { ssr: false })
 import type { Profile, ChartType } from '@/types'
 
 interface AdminClientProps {
   profiles: Profile[]
 }
 
-type AdminTab = 'users' | 'feeds' | 'research' | 'reports' | 'courses'
+type AdminTab = 'users' | 'feeds' | 'research' | 'reports' | 'courses' | 'audit'
 
 const TABS: { id: AdminTab; label: string }[] = [
   { id: 'users',    label: 'Users' },
@@ -529,6 +531,13 @@ export default function AdminClient({ profiles: initialProfiles }: AdminClientPr
               <div className="border border-gray-200 rounded-xl p-5 bg-white">
                 <h2 className="font-display font-bold text-navy-900 text-base mb-5">Assign Private Report ke Client</h2>
                 <ReportForm />
+              </div>
+            )}
+
+            {activeTab === 'audit' && (
+              <div className="border border-gray-200 rounded-xl p-5 bg-white">
+                <h2 className="font-display font-bold text-navy-900 text-base mb-5">Audit Log Aktivitas</h2>
+                <AuditLog />
               </div>
             )}
 
