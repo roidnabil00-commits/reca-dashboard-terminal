@@ -1,33 +1,30 @@
 import { createServerClient } from '@supabase/ssr'
-import { type NextRequest, NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
 
-export async function updateSession(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({ request })
+export function createClient() {
+  const cookieStore = cookies()
 
-  const supabase = createServerClient(
+  return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
         getAll() {
-          return request.cookies.getAll()
+          return cookieStore.getAll()
         },
-        // Tambahkan : any[] di sebelah cookiesToSet
+        // PERBAIKANNYA ADA DI SINI: Tambahkan : any[]
         setAll(cookiesToSet: any[]) {
-          cookiesToSet.forEach(({ name, value }) =>
-            request.cookies.set(name, value)
-          )
-          supabaseResponse = NextResponse.next({ request })
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          )
+          try {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options)
+            )
+          } catch (error) {
+            // Method setAll ini dipanggil dari Server Component.
+            // Error ini bisa diabaikan dengan aman karena kita punya
+            // middleware.ts yang mengurus pembaruan sesi user.
+          }
         },
       },
     }
   )
-
-  // Refresh session if expired
-  await supabase.auth.getUser()
-
-  return supabaseResponse
 }
