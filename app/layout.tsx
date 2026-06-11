@@ -9,6 +9,41 @@ export const metadata: Metadata = {
   title: 'Reca Intelligence Terminal',
   description: 'Private Market Intelligence Platform — RECA',
   manifest: '/manifest.json',
+  
+  // 1. TAMBAHKAN INI UNTUK FAVICON
+  icons: {
+    icon: '/icons/icon-192x192.png', // Atau arahkan ke '/favicon.ico' jika ada di folder public
+    shortcut: '/icons/icon-192x192.png',
+    apple: '/icons/icon-192x192.png',
+  },
+
+  // 2. TAMBAHKAN INI UNTUK OPEN GRAPH (WhatsApp, Facebook, LinkedIn)
+  openGraph: {
+    title: 'Reca Intelligence Terminal',
+    description: 'Private Market Intelligence Platform — RECA',
+    url: 'https://domain-reca-anda.com', // Ganti dengan URL asli website Anda
+    siteName: 'Reca Intel',
+    images: [
+      {
+        url: '/og-image.jpg', // Siapkan gambar banner ukuran 1200x630px dan taruh di folder public/
+        width: 1200,
+        height: 630,
+        alt: 'Reca Intelligence Terminal Banner',
+      },
+    ],
+    locale: 'id_ID', // atau en_US
+    type: 'website',
+  },
+
+  // 3. TAMBAHKAN INI UNTUK TWITTER/X
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Reca Intelligence Terminal',
+    description: 'Private Market Intelligence Platform — RECA',
+    images: ['/og-image.jpg'], // Gunakan gambar banner yang sama
+  },
+
+  // (Kode Anda yang sudah ada di bawah ini tetap dipertahankan)
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
