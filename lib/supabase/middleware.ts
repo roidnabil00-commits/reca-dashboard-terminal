@@ -12,16 +12,14 @@ export function createClient() {
         getAll() {
           return cookieStore.getAll()
         },
-        // PERBAIKANNYA ADA DI SINI: Tambahkan : any[]
+        // PERHATIKAN BARIS INI: sudah ada tambahan : any[]
         setAll(cookiesToSet: any[]) {
           try {
             cookiesToSet.forEach(({ name, value, options }) =>
               cookieStore.set(name, value, options)
             )
-          } catch (error) {
-            // Method setAll ini dipanggil dari Server Component.
-            // Error ini bisa diabaikan dengan aman karena kita punya
-            // middleware.ts yang mengurus pembaruan sesi user.
+          } catch {
+            // Server Component — can be ignored if middleware refreshes sessions
           }
         },
       },
