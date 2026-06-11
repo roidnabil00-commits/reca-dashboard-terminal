@@ -51,8 +51,8 @@ function isMultiCategory(data: ChartDataPoint[]): boolean {
 }
 
 function flattenMulti(data: ChartDataPoint[]) {
-  const cats = [...new Set(data.map(d => d.category || 'default'))]
-  const labels = [...new Set(data.map(d => d.label))]
+  const cats = Array.from(new Set(data.map(d => d.category || 'default')))
+const labels = Array.from(new Set(data.map(d => d.label)))
   return {
     flat: labels.map(label => {
       const row: Record<string, string | number> = { label }
