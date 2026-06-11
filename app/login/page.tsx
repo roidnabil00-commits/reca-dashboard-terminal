@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
@@ -11,6 +11,18 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+  const [checkingSession, setCheckingSession] = useState(true)
+
+  // Cek apakah sudah login — kalau iya langsung redirect
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        router.replace('/dashboard')
+      } else {
+        setCheckingSession(false)
+      }
+    })
+  }, [])
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -20,7 +32,11 @@ export default function LoginPage() {
     const { error } = await supabase.auth.signInWithPassword({ email, password })
 
     if (error) {
-      setError(error.message)
+      setError(
+        error.message === 'Invalid login credentials'
+          ? 'Email atau password salah. Silakan periksa kembali.'
+          : error.message
+      )
       setLoading(false)
       return
     }
@@ -29,29 +45,38 @@ export default function LoginPage() {
     router.refresh()
   }
 
+  // Tampilkan loading saat cek session agar tidak flicker
+  if (checkingSession) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="w-5 h-5 border-2 border-navy-900 border-t-transparent rounded-full animate-spin" />
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-white flex">
-      {/* Left — Branding */}
-      <div className="hidden lg:flex w-1/2 bg-navy-900 flex-col justify-between p-12 relative overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-full h-full"
-            style={{
-              backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px)`
-            }}
-          />
-        </div>
+      {/* Left panel — branding */}
+      <div className="hidden lg:flex w-1/2 bg-[#0f2044] flex-col justify-between p-12 relative overflow-hidden">
+        {/* Grid background */}
+        <div
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: `
+              repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px),
+              repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px)
+            `,
+          }}
+        />
 
         {/* Logo */}
-        <div className="relative z-10">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center">
-              <span className="text-white font-display font-bold text-lg">R</span>
-            </div>
-            <div>
-              <p className="text-white font-display font-bold text-lg leading-none">RECA</p>
-              <p className="text-white/50 text-xs leading-tight mt-0.5">Intelligence Terminal</p>
-            </div>
+        <div className="relative z-10 flex items-center gap-3">
+          <div className="w-10 h-10 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center">
+            <span className="text-white font-display font-bold text-lg">R</span>
+          </div>
+          <div>
+            <p className="text-white font-display font-bold text-lg leading-none">RECA</p>
+            <p className="text-white/50 text-xs mt-0.5">Intelligence Terminal</p>
           </div>
         </div>
 
@@ -59,86 +84,88 @@ export default function LoginPage() {
         <div className="relative z-10">
           <h1 className="font-display text-4xl font-bold text-white leading-tight mb-4">
             Private Market<br />Intelligence.<br />
-            <span className="text-white/50">Exclusively Yours.</span>
+            <span className="text-white/40">Exclusively Yours.</span>
           </h1>
           <p className="text-white/60 text-sm leading-relaxed max-w-xs">
-            Access curated market insights, private research reports, and AI-powered analysis — crafted for elite decision-makers.
+            Akses riset pasar eksklusif, laporan privat, dan analisis berbasis AI — dirancang untuk pengambil keputusan elit.
           </p>
         </div>
 
         {/* Footer note */}
         <div className="relative z-10 border-t border-white/10 pt-6">
           <p className="text-white/30 text-xs">
-            Access is by invitation only. All sessions are logged and monitored.
+            Akses hanya untuk undangan. Semua sesi direkam dan dipantau.
           </p>
         </div>
       </div>
 
-      {/* Right — Login Form */}
+      {/* Right panel — form */}
       <div className="flex-1 flex flex-col justify-center items-center px-6 py-12">
         {/* Mobile logo */}
         <div className="lg:hidden mb-10 text-center">
-          <div className="w-12 h-12 bg-navy-900 rounded-xl flex items-center justify-center mx-auto mb-3">
+          <div className="w-12 h-12 bg-[#0f2044] rounded-xl flex items-center justify-center mx-auto mb-3">
             <span className="text-white font-display font-bold text-xl">R</span>
           </div>
-          <p className="font-display font-bold text-navy-900 text-lg">RECA Intelligence Terminal</p>
+          <p className="font-display font-bold text-[#0f2044] text-lg">RECA Intelligence Terminal</p>
           <p className="text-gray-400 text-sm mt-1">Private Market Intelligence Platform</p>
         </div>
 
         <div className="w-full max-w-sm">
           <div className="mb-8">
-            <h2 className="text-2xl font-display font-bold text-navy-900">Secure Access</h2>
-            <p className="text-gray-500 text-sm mt-1">Enter your credentials to continue</p>
+            <h2 className="text-2xl font-display font-bold text-[#0f2044]">Secure Access</h2>
+            <p className="text-gray-500 text-sm mt-1">Masukkan kredensial Anda untuk melanjutkan</p>
           </div>
 
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+            <div className="mb-5 p-3.5 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2.5">
+              <svg className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+              </svg>
               <p className="text-red-700 text-sm">{error}</p>
             </div>
           )}
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-semibold text-gray-700 mb-1.5">
                 Email Address
               </label>
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value)}
                 required
-                placeholder="you@example.com"
-                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent transition-all"
+                placeholder="email@domain.com"
+                autoComplete="email"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0f2044] focus:border-transparent transition"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-semibold text-gray-700 mb-1.5">
                 Password
               </label>
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={e => setPassword(e.target.value)}
                 required
                 placeholder="••••••••"
-                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-navy-900 focus:border-transparent transition-all"
+                autoComplete="current-password"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0f2044] focus:border-transparent transition"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-navy-900 text-white font-semibold py-2.5 rounded-lg hover:bg-navy-800 transition-colors duration-200 text-sm disabled:opacity-60 disabled:cursor-not-allowed mt-2"
+              className="w-full bg-[#0f2044] text-white font-semibold py-2.5 rounded-lg hover:bg-[#1a3366] transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed mt-2 flex items-center justify-center gap-2"
             >
               {loading ? (
-                <span className="flex items-center justify-center gap-2">
-                  <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                  </svg>
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   Authenticating...
-                </span>
+                </>
               ) : (
                 'Access Terminal'
               )}
@@ -147,7 +174,7 @@ export default function LoginPage() {
 
           <div className="mt-6 pt-6 border-t border-gray-100 text-center">
             <p className="text-xs text-gray-400">
-              No public registration. Contact your RECA account manager for access.
+              Tidak ada registrasi publik. Hubungi account manager RECA Anda untuk mendapatkan akses.
             </p>
           </div>
         </div>
