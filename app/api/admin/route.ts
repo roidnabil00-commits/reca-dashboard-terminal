@@ -179,7 +179,7 @@ export async function POST(request: NextRequest) {
 
     const { error } = await supabaseAdmin.from('general_researches').insert({
       title: sanitizeString(String(title), 300),
-      description: description ? sanitizeString(String(description), 1000) : null,
+      description: description ? sanitizeString(String(description), 10000) : null,
       drive_link_pdf: drive_link_pdf ? String(drive_link_pdf) : null,
       drive_link_ppt: drive_link_ppt ? String(drive_link_ppt) : null,
     })
@@ -230,7 +230,7 @@ export async function POST(request: NextRequest) {
     const { error } = await supabaseAdmin.from('private_reports').insert({
       client_id: String(client_id),
       title: sanitizeString(String(title), 300),
-      description: description ? sanitizeString(String(description), 1000) : null,
+      description: description ? sanitizeString(String(description), 10000) : null,
       drive_link_pdf: drive_link_pdf ? String(drive_link_pdf) : null,
       drive_link_ppt: drive_link_ppt ? String(drive_link_ppt) : null,
       drive_link_csv: drive_link_csv ? String(drive_link_csv) : null,
@@ -270,7 +270,7 @@ export async function POST(request: NextRequest) {
     const { error } = await supabaseAdmin.from('course_modules').insert({
       title: sanitizeString(String(title), 300),
       type: String(type),
-      description: description ? sanitizeString(String(description), 1000) : null,
+      description: description ? sanitizeString(String(description), 10000) : null,
       source_link: String(source_link),
       cover_image: cover_image ? String(cover_image) : null,
     })
