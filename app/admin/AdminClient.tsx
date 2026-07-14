@@ -276,72 +276,129 @@ export default function AdminClient({ profiles: initialProfiles }: AdminClientPr
   }
 
   // ---------- PRIVATE REPORT FORM ----------
-  function ReportForm() {
-    const blank = {
-      client_id: '', title: '', description: '',
-      drive_link_pdf: '', drive_link_ppt: '', drive_link_csv: '',
-      drive_link_md: '', youtube_link: '', artikel_link: '',
-    }
-    const [f, setF] = useState(blank)
-    const s = (k: keyof typeof blank) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
-      setF(prev => ({ ...prev, [k]: e.target.value }))
+  // ---------- PRIVATE REPORT FORM (UPDATED) ----------
+// Ganti seluruh fungsi ReportForm yang lama dengan ini
 
-    return (
-      <form onSubmit={async e => {
+function ReportForm() {
+  const blank = {
+    tier_access: 'client_premium',
+    title: '',
+    description: '',
+    drive_link_pdf: '',
+    drive_link_ppt: '',
+    drive_link_csv: '',
+    drive_link_md: '',
+    youtube_link: '',
+    artikel_link: '',
+  }
+  const [f, setF] = useState(blank)
+  const s = (k: keyof typeof blank) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => setF(prev => ({ ...prev, [k]: e.target.value }))
+
+  return (
+    <form
+      onSubmit={async e => {
         e.preventDefault()
-        if (!f.client_id) { setFeedback({ type: 'error', msg: 'Pilih client terlebih dahulu.' }); return }
         const ok = await post({ action: 'add_private_report', ...f })
         if (ok) setF(blank)
-      }} className="space-y-4">
-        <Field label="Assign ke Client">
-          <SelectEl value={f.client_id} onChange={e => setF(p => ({ ...p, client_id: e.target.value }))} required>
-            <option value="">— Pilih Client —</option>
-            {clientProfiles.map(p => (
-              <option key={p.id} value={p.id}>{p.full_name} ({p.email})</option>
-            ))}
-          </SelectEl>
-          {clientProfiles.length === 0 && (
-            <p className="text-xs text-red-600 mt-1.5 font-medium">
-              Belum ada Client Premium. Buat akun dengan role "Client Premium" di tab Users terlebih dahulu.
-            </p>
-          )}
-        </Field>
-        <Field label="Judul Report">
-          <Input value={f.title} onChange={s('title')} required placeholder="Analisis Pasar — PT Nama Perusahaan Q2 2025" />
-        </Field>
-        <Field label="Deskripsi">
-          <Textarea value={f.description} onChange={s('description')} rows={2} placeholder="Ringkasan singkat isi report ini..." />
-        </Field>
+      }}
+      className="space-y-4"
+    >
+      {/* TIER ACCESS — ganti assign per client */}
+      <Field
+        label="Tier Access"
+        hint="Pilih tier yang bisa mengakses report ini. Semua user dengan role tersebut akan otomatis bisa membaca."
+      >
+        <SelectEl value={f.tier_access} onChange={s('tier_access')}>
+          <option value="premium_member">Premium Member (Tier 1)</option>
+          <option value="client_premium">Client Premium (Tier 2 & 3)</option>
+          <option value="admin">Admin Only</option>
+        </SelectEl>
+      </Field>
 
-        <SectionDivider label="File dan Tautan" />
+      <Field label="Judul Report">
+        <Input
+          value={f.title}
+          onChange={s('title')}
+          required
+          placeholder="Analisis Pasar F&B — Puncak Q2 2025"
+        />
+      </Field>
 
-        <p className="text-xs text-gray-500 leading-relaxed">
-          Isi hanya jenis file yang tersedia. Setiap jenis file yang diisi akan tampil sebagai kartu terpisah di halaman client.
-        </p>
+      <Field label="Deskripsi">
+        <Textarea
+          value={f.description}
+          onChange={s('description')}
+          rows={2}
+          placeholder="Ringkasan singkat isi report ini..."
+        />
+      </Field>
 
-        <Field label="PDF Report (Google Drive)">
-          <Input value={f.drive_link_pdf} onChange={s('drive_link_pdf')} placeholder="https://drive.google.com/file/d/.../view" />
-        </Field>
-        <Field label="Presentation / Slides (Google Drive)">
-          <Input value={f.drive_link_ppt} onChange={s('drive_link_ppt')} placeholder="https://drive.google.com/file/d/.../view" />
-        </Field>
-        <Field label="Data / Spreadsheet / CSV (Google Drive)">
-          <Input value={f.drive_link_csv} onChange={s('drive_link_csv')} placeholder="https://drive.google.com/file/d/.../view" />
-        </Field>
-        <Field label="Executive Brief / Markdown (Google Drive)" hint="File .md yang dapat dirender langsung di platform.">
-          <Input value={f.drive_link_md} onChange={s('drive_link_md')} placeholder="https://drive.google.com/file/d/.../view" />
-        </Field>
-        <Field label="Video Briefing (YouTube)" hint="Gunakan link YouTube unlisted untuk privasi.">
-          <Input value={f.youtube_link} onChange={s('youtube_link')} placeholder="https://youtu.be/..." />
-        </Field>
-        <Field label="Referensi Artikel (URL)">
-          <Input value={f.artikel_link} onChange={s('artikel_link')} placeholder="https://example.com/artikel" />
-        </Field>
+      <SectionDivider label="File dan Tautan" />
 
-        <SubmitButton loading={loading} label="Assign Report ke Client" loadingLabel="Menyimpan..." />
-      </form>
-    )
-  }
+      <p className="text-xs text-gray-500 leading-relaxed">
+        Isi hanya jenis file yang tersedia. Setiap jenis file yang diisi akan
+        tampil sebagai kartu terpisah di halaman member.
+      </p>
+
+      <Field label="PDF Report (Google Drive)">
+        <Input
+          value={f.drive_link_pdf}
+          onChange={s('drive_link_pdf')}
+          placeholder="https://drive.google.com/file/d/.../view"
+        />
+      </Field>
+      <Field label="Presentation / Slides (Google Drive)">
+        <Input
+          value={f.drive_link_ppt}
+          onChange={s('drive_link_ppt')}
+          placeholder="https://drive.google.com/file/d/.../view"
+        />
+      </Field>
+      <Field label="Data / Spreadsheet / CSV (Google Drive)">
+        <Input
+          value={f.drive_link_csv}
+          onChange={s('drive_link_csv')}
+          placeholder="https://drive.google.com/file/d/.../view"
+        />
+      </Field>
+      <Field
+        label="Executive Brief / Markdown (Google Drive)"
+        hint="File .md yang dapat dirender langsung di platform."
+      >
+        <Input
+          value={f.drive_link_md}
+          onChange={s('drive_link_md')}
+          placeholder="https://drive.google.com/file/d/.../view"
+        />
+      </Field>
+      <Field
+        label="Video Briefing (YouTube)"
+        hint="Gunakan link YouTube unlisted untuk privasi."
+      >
+        <Input
+          value={f.youtube_link}
+          onChange={s('youtube_link')}
+          placeholder="https://youtu.be/..."
+        />
+      </Field>
+      <Field label="Referensi Artikel (URL)">
+        <Input
+          value={f.artikel_link}
+          onChange={s('artikel_link')}
+          placeholder="https://example.com/artikel"
+        />
+      </Field>
+
+      <SubmitButton
+        loading={loading}
+        label="Publish Report"
+        loadingLabel="Menyimpan..."
+      />
+    </form>
+  )
+}
 
   // ---------- COURSE FORM ----------
   function CourseForm() {

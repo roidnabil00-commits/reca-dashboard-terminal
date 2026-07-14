@@ -17,11 +17,12 @@ export default async function PrivateReportPage() {
     .single()
 
   // RLS will automatically filter by client_id for non-admins
-  const { data: reports } = await supabase
-    .from('private_reports')
-    .select('*')
-    .order('created_at', { ascending: false })
-
+ const { data: reports } = await supabase
+  .from('private_reports')
+  .select('*')
+  .eq('tier_access', profile.role) // filter by role, bukan client_id
+  .order('created_at', { ascending: false })
+  
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar profile={profile as Profile} />
