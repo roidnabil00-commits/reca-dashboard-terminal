@@ -305,7 +305,7 @@ function ReportForm() {
       }}
       className="space-y-4"
     >
-      {/* TIER ACCESS — ganti assign per client */}
+      {/* TIER ACCESS  ganti assign per client */}
       <Field
         label="Tier Access"
         hint="Pilih tier yang bisa mengakses report ini. Semua user dengan role tersebut akan otomatis bisa membaca."
@@ -322,7 +322,7 @@ function ReportForm() {
           value={f.title}
           onChange={s('title')}
           required
-          placeholder="Analisis Pasar F&B — Puncak Q2 2025"
+          placeholder="Analisis Pasar F&B  Puncak Q2 2025"
         />
       </Field>
 
@@ -451,7 +451,7 @@ function ReportForm() {
           </div>
           <div>
             <h1 className="text-xl font-display font-bold text-navy-900">Admin Panel</h1>
-            <p className="text-sm text-gray-500">Backoffice Management — Restricted Access</p>
+            <p className="text-sm text-gray-500">Backoffice Management  Restricted Access</p>
           </div>
         </div>
       </div>

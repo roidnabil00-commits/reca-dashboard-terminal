@@ -85,7 +85,7 @@ const IconReport = () => (
 // ─────────────────────────────────────────────────────────────
 const INITIAL_MESSAGE: ChatMessage = {
   role: 'assistant',
-  content: 'Selamat datang di **RECA AI Analyst Terminal**. Saya memiliki akses ke seluruh konten platform Anda — termasuk Intel Feed, Research Library, Private Reports, dan Learning Center. Tanyakan apa saja, termasuk "apakah ada riset tentang X?" atau "laporan apa yang tersedia untuk saya?"',
+  content: 'Selamat datang di **RECA AI Analyst Terminal**. Saya memiliki akses ke seluruh konten platform Anda  termasuk Intel Feed, Research Library, Private Reports, dan Learning Center. Tanyakan apa saja, termasuk "apakah ada riset tentang X?" atau "laporan apa yang tersedia untuk saya?"',
 }
 
 const QUICK_PROMPTS: QuickPrompt[] = [
@@ -435,7 +435,7 @@ export default function AiChat() {
             </div>
           </div>
           <p className="text-center mt-2.5 text-[10px] text-slate-500 font-medium tracking-wide select-none">
-            RECA Intelligence Terminal — Gemini 2.0 Flash
+            RECA Intelligence Terminal  Gemini 2.0 Flash
           </p>
         </div>
       </div>

@@ -7,7 +7,7 @@ const jetbrains = { variable: '--font-jetbrains' }
 
 export const metadata: Metadata = {
   title: 'Reca Intelligence Terminal',
-  description: 'Private Market Intelligence Platform — RECA',
+  description: 'Private Market Intelligence Platform  RECA',
   manifest: '/manifest.json',
   
   // 1. TAMBAHKAN INI UNTUK FAVICON
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   // 2. TAMBAHKAN INI UNTUK OPEN GRAPH (WhatsApp, Facebook, LinkedIn)
   openGraph: {
     title: 'Reca Intelligence Terminal',
-    description: 'Private Market Intelligence Platform — RECA',
+    description: 'Private Market Intelligence Platform  RECA',
     url: 'https://domain-reca-anda.com', // Ganti dengan URL asli website Anda
     siteName: 'Reca Intel',
     images: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Reca Intelligence Terminal',
-    description: 'Private Market Intelligence Platform — RECA',
+    description: 'Private Market Intelligence Platform  RECA',
     images: ['/og-image.jpg'], // Gunakan gambar banner yang sama
   },
 

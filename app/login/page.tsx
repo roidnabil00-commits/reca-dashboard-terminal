@@ -13,7 +13,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [checkingSession, setCheckingSession] = useState(true)
 
-  // Cek apakah sudah login — kalau iya langsung redirect
+  // Cek apakah sudah login  kalau iya langsung redirect
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
@@ -56,7 +56,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-white flex">
-      {/* Left panel — branding */}
+      {/* Left panel  branding */}
       <div className="hidden lg:flex w-1/2 bg-[#0f2044] flex-col justify-between p-12 relative overflow-hidden">
         {/* Grid background */}
         <div
@@ -87,7 +87,7 @@ export default function LoginPage() {
             <span className="text-white/40">Exclusively Yours.</span>
           </h1>
           <p className="text-white/60 text-sm leading-relaxed max-w-xs">
-            Akses riset pasar eksklusif, laporan privat, dan analisis berbasis AI — dirancang untuk pengambil keputusan elit.
+            Akses riset pasar eksklusif, laporan privat, dan analisis berbasis AI  dirancang untuk pengambil keputusan elit.
           </p>
         </div>
 
@@ -99,7 +99,7 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Right panel — form */}
+      {/* Right panel  form */}
       <div className="flex-1 flex flex-col justify-center items-center px-6 py-12">
         {/* Mobile logo */}
         <div className="lg:hidden mb-10 text-center">

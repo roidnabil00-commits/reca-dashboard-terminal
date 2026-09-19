@@ -85,7 +85,7 @@ export function isValidDriveUrl(url: string): boolean {
 }
 
 /**
- * Validate article URL — must be http/https.
+ * Validate article URL  must be http/https.
  */
 export function isValidUrl(url: string): boolean {
   if (!url) return true
@@ -98,7 +98,7 @@ export function isValidUrl(url: string): boolean {
 }
 
 /**
- * Validate chart data JSON — must be array of objects with label + value.
+ * Validate chart data JSON  must be array of objects with label + value.
  */
 export function validateChartData(raw: unknown): boolean {
   if (!raw) return true

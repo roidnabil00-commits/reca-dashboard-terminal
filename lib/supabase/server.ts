@@ -18,7 +18,7 @@ setAll(cookiesToSet: any[]) {
               cookieStore.set(name, value, options)
             )
           } catch {
-            // Server Component — can be ignored if middleware refreshes sessions
+            // Server Component  can be ignored if middleware refreshes sessions
           }
         },
       },

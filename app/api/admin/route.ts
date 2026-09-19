@@ -36,7 +36,7 @@ function badRequest(msg = 'Bad request') {
 
 export async function POST(request: NextRequest) {
   const auth = await verifyAdminRequest()
-  if (!auth) return forbidden('Unauthorized — admin access required')
+  if (!auth) return forbidden('Unauthorized  admin access required')
 
   const { user, profile } = auth
 
@@ -180,7 +180,7 @@ export async function POST(request: NextRequest) {
   }
 
   // ================================================================
-  // ACTION: add_private_report — UPDATED: tier_access instead of client_id
+  // ACTION: add_private_report  UPDATED: tier_access instead of client_id
   // ================================================================
   if (action === 'add_private_report') {
     const {
@@ -195,7 +195,7 @@ export async function POST(request: NextRequest) {
     // Validate tier_access value
     const allowedTiers = ['premium_member', 'client_premium', 'admin']
     if (!allowedTiers.includes(String(tier_access)))
-      return badRequest('Invalid tier_access — must be premium_member, client_premium, or admin')
+      return badRequest('Invalid tier_access  must be premium_member, client_premium, or admin')
 
     // Validate all Drive URLs
     const driveLinks = [drive_link_pdf, drive_link_ppt, drive_link_csv, drive_link_md]
@@ -237,7 +237,7 @@ export async function POST(request: NextRequest) {
 
     const allowedTypes = ['video', 'book']
     if (!allowedTypes.includes(String(type)))
-      return badRequest('Invalid type — must be video or book')
+      return badRequest('Invalid type  must be video or book')
 
     if (!isValidUrl(String(source_link)))
       return badRequest('source_link must be a valid URL')

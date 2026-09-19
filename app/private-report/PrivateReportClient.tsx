@@ -240,7 +240,7 @@ export default function PrivateReportClient({ reports }: Props) {
       )
     }
 
-    // PDF, PPT, CSV — Google Drive preview
+    // PDF, PPT, CSV  Google Drive preview
     const previewUrl = getDrivePreviewUrl(activeCard.url)
     if (previewUrl) {
       return (
@@ -277,7 +277,7 @@ export default function PrivateReportClient({ reports }: Props) {
             <div>
               <h1 className="text-xl font-display font-bold text-navy-900">Private Reports</h1>
               <p className="text-sm text-gray-500">
-                Laporan eksklusif — terikat ke akun Anda
+                Laporan eksklusif  terikat ke akun Anda
                 {fileCards.length > 0 && (
                   <span className="ml-2 font-medium text-navy-700">{fileCards.length} dokumen tersedia</span>
                 )}

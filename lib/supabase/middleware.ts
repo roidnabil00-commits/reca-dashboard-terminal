@@ -1,28 +1,55 @@
 import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+import { NextResponse, type NextRequest } from 'next/server'
 
-export function createClient() {
-  const cookieStore = cookies()
+export async function updateSession(request: NextRequest) {
+  let supabaseResponse = NextResponse.next({
+    request,
+  })
 
-  return createServerClient(
+  const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
         getAll() {
-          return cookieStore.getAll()
+          return request.cookies.getAll()
         },
-        // PERHATIKAN BARIS INI: sudah ada tambahan : any[]
-        setAll(cookiesToSet: any[]) {
-          try {
-            cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
-            )
-          } catch {
-            // Server Component — can be ignored if middleware refreshes sessions
-          }
+        // Penambahan tipe data eksplisit pada parameter cookiesToSet
+        setAll(cookiesToSet: { name: string; value: string; options?: any }[]) {
+          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
+          supabaseResponse = NextResponse.next({
+            request,
+          })
+          cookiesToSet.forEach(({ name, value }) =>
+            supabaseResponse.cookies.set(name, value)
+          )
         },
       },
     }
   )
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  const pathname = request.nextUrl.pathname
+
+  // Redirect user yang sudah login jika membuka LP (/) atau halaman /login
+  if (user && (pathname === '/' || pathname === '/login')) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/dashboard'
+    return NextResponse.redirect(url)
+  }
+
+  // Lindungi route internal jika user belum login
+  const protectedRoutes = ['/dashboard', '/courses', '/research', '/private-report', '/admin']
+  const isProtectedRoute = protectedRoutes.some((route) => pathname.startsWith(route))
+
+  if (!user && isProtectedRoute) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/login'
+    return NextResponse.redirect(url)
+  }
+
+  return supabaseResponse
 }

@@ -1,6 +1,6 @@
 # Reca Intelligence Terminal
 
-Private Market Intelligence Platform — RECA
+Private Market Intelligence Platform  RECA
 
 ## Tech Stack
 - **Framework**: Next.js 14 (App Router, TypeScript)
@@ -105,7 +105,7 @@ Accessible via the floating chat button on the Dashboard.
 ---
 
 ## Google Drive Integration
-Paste any standard Google Drive sharing link — the platform automatically extracts the File ID and converts it to a `drive.google.com/file/d/FILE_ID/preview` embed URL.
+Paste any standard Google Drive sharing link  the platform automatically extracts the File ID and converts it to a `drive.google.com/file/d/FILE_ID/preview` embed URL.
 
 **Important**: Set Google Drive files to **"Anyone with the link can view"** for iframes to work.
 

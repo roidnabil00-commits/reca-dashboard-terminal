@@ -44,21 +44,22 @@ export async function middleware(request: NextRequest) {
   // ── 3. Refresh session
   const { data: { user } } = await supabase.auth.getUser()
 
-  // ── 4. Halaman /login — selalu boleh diakses
-  if (pathname === '/login' || pathname.startsWith('/login')) {
-    if (user) {
-      return NextResponse.redirect(new URL('/dashboard', request.url))
-    }
-    return addSecurityHeaders(supabaseResponse)
+  // ── 4. Jika user SUDAH login dan mencoba buka Landing Page (/) atau /login -> Lempar ke /dashboard
+  if (user && (pathname === '/' || pathname === '/login')) {
+    return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
-  // ── 5. User belum login — redirect ke /login
-  if (!user) {
+  // ── 5. Daftar halaman internal yang WAJIB login (Protected Routes)
+  const protectedRoutes = ['/dashboard', '/courses', '/research', '/private-report', '/admin']
+  const isProtectedRoute = protectedRoutes.some((route) => pathname.startsWith(route))
+
+  // Jika user BELUM login dan mencoba buka halaman internal -> Lempar ke /login
+  if (!user && isProtectedRoute) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
-  // ── 6. Proteksi halaman /admin
-  if (pathname.startsWith('/admin')) {
+  // ── 6. Proteksi khusus halaman /admin (Harus role 'admin')
+  if (user && pathname.startsWith('/admin')) {
     const { data: profile } = await supabase
       .from('profiles')
       .select('role')
@@ -70,11 +71,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // ── 7. Root redirect
-  if (pathname === '/') {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
-  }
-
+  // ── 7. Tampilkan halaman publik (termasuk Landing Page '/') jika user belum login
   return addSecurityHeaders(supabaseResponse)
 }
 
