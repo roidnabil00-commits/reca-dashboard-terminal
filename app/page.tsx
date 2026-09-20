@@ -113,10 +113,10 @@ export default function LandingPage() {
                 DIBANGUN OLEH
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
-                [Nama Anda]
+                [Abil]
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light mb-2">
-                [Ceritakan singkat kenapa Anda membangun RECA  pengalaman turun langsung riset lapangan, bisnis yang pernah dijalani, atau alasan Anda percaya keputusan F&amp;B harus berbasis data. Tulis yang benar dan bisa Anda pertanggungjawabkan.]
+                [Banyak sekali bisnis di luaran sana yang masih tidak tahu arah perusahaannya ingin dibawa kemana karena tidak ada contoh business model yang bisa dilihat, Reca hadir sebagai peta dengan memberikan hasil analisa & riset baik dari market/ pasar dan kompetitor sehingga bisnis kalian bisa melihat gambaran dan meniru startegi kompetitor yang sudah berhasil.]
               </p>
             </div>
 
@@ -207,7 +207,7 @@ export default function LandingPage() {
               <span className="text-xs font-mono text-slate-400 font-bold">02</span>
               <h3 className="text-lg font-bold text-slate-900 mt-1">Analisa Lokasi</h3>
               <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
-                Bandingkan beberapa titik di Jakarta berdasarkan traffic, kepadatan kompetitor, dan kecocokan dengan konsep bisnis Anda.
+                Bandingkan beberapa titik di sekitar anda berdasarkan traffic, kepadatan kompetitor, dan kecocokan dengan konsep bisnis Anda.
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 grid grid-cols-2 gap-3 mt-auto">
@@ -228,7 +228,7 @@ export default function LandingPage() {
               <span className="text-xs font-mono text-slate-400 font-bold">03</span>
               <h3 className="text-lg font-bold text-slate-900 mt-1">Riset Campaign Marketing Kompetitor</h3>
               <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
-                Kami rangkum promo, channel, dan campaign yang sedang berjalan  supaya strategi Anda tidak jalan buta.
+                Kami rangkum promo, akun, channel, konten dan campaign yang sedang berjalan  supaya strategi Anda tidak jalan buta.
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 space-y-2 mt-auto">
