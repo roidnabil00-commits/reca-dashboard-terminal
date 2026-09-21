@@ -286,7 +286,7 @@ export default function LandingPage() {
         <div className="bg-white border border-slate-200 rounded-[32px] p-6 sm:p-8 shadow-sm">
           <span className="text-[10px] font-mono text-slate-400 uppercase tracking-[0.25em] font-bold block mb-2">STUDI KASUS</span>
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
-            Riset kompetitor untuk sebuah usaha kuliner rumahan
+            Riset kompetitor profesional
           </h2>
           <div className="mt-4 p-5 rounded-2xl bg-slate-50 border border-slate-200">
             <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
