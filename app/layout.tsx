@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 
 const inter = { variable: '--font-inter' }
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
       { url: '/icons/icon-152x152.png', sizes: '152x152' },
       { url: '/icons/icon-192x192.png', sizes: '180x180' },
       { url: '/icons/icon-192x192.png', sizes: '167x167' },
-    ],
+        ],
   },
   openGraph: {
     title: 'Reca Intelligence Terminal',
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     siteName: 'Reca Intel',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/abilreca.jpeg',
         width: 1200,
         height: 630,
         alt: 'Reca Intelligence Terminal Banner',
@@ -71,6 +72,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} font-sans bg-white text-gray-900 antialiased`}>
         {children}
       </body>
+      <GoogleAnalytics gaId="G-C97R9KWRK8" />
     </html>
   )
 }
