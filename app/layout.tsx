@@ -71,8 +71,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} font-sans bg-white text-gray-900 antialiased`}>
         {children}
+              <GoogleAnalytics gaId="G-C97R9KWRK8" />
+
       </body>
-      <GoogleAnalytics gaId="G-C97R9KWRK8" />
     </html>
   )
 }
