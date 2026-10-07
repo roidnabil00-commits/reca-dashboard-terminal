@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: 'Reca Intel',
     images: [
       {
-        url: '/abilreca.jpeg',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Reca Intelligence Terminal Banner',
