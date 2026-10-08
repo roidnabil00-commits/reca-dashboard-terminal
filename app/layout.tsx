@@ -12,14 +12,17 @@ export const metadata: Metadata = {
   description: 'Private Market Intelligence Platform RECA',
   manifest: '/manifest.json',
   icons: {
-    icon: '/icons/icon-192x192.png',
-    shortcut: '/icons/icon-192x192.png',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
     apple: [
       { url: '/icons/icon-192x192.png' },
       { url: '/icons/icon-152x152.png', sizes: '152x152' },
       { url: '/icons/icon-192x192.png', sizes: '180x180' },
       { url: '/icons/icon-192x192.png', sizes: '167x167' },
-        ],
+    ],
   },
   openGraph: {
     title: 'Reca Intelligence Terminal',
@@ -71,8 +74,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} font-sans bg-white text-gray-900 antialiased`}>
         {children}
-              <GoogleAnalytics gaId="G-C97R9KWRK8" />
-
+        <GoogleAnalytics gaId="G-C97R9KWRK8" />
       </body>
     </html>
   )
