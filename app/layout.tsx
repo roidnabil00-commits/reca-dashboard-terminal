@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
 const inter = { variable: '--font-inter' }
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       { url: '/icons/icon-192x192.png' },
       { url: '/icons/icon-152x152.png', sizes: '152x152' },
       { url: '/icons/icon-192x192.png', sizes: '180x180' },
-      { url: '/icons/icon-192x192.png', sizes: '167x167' },
+      { url: '/icons/icon-167x167.png', sizes: '167x167' },
     ],
   },
   openGraph: {
@@ -74,7 +74,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} font-sans bg-white text-gray-900 antialiased`}>
         {children}
-        <GoogleAnalytics gaId="G-C97R9KWRK8" />
+        <Analytics />
       </body>
     </html>
   )
