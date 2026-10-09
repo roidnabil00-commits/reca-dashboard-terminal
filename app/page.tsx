@@ -406,36 +406,68 @@ export default function LandingPage() {
 
       {/* ========================================================= */}
       {/* 9. FAQ ACCORDION SECTION */}
-      {/* ========================================================= */}
-      <section id="faq" className="px-4 max-w-2xl md:max-w-4xl mx-auto mb-16">
-        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-8">FAQ</h2>
+{/* ========================================================= */}
+<section id="faq" className="px-4 max-w-2xl md:max-w-4xl mx-auto mb-16">
+  <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-8">FAQ</h2>
 
-        <div className="bg-white border border-slate-200 rounded-[32px] p-4 sm:p-6 md:p-8 shadow-sm space-y-3">
-          {[
-            { q: 'Bisnis saya masih kecil, apa tetap bisa pakai RECA?', a: 'Bisa. RECA melayani mulai dari usaha rumahan yang baru mau buka, sampai bisnis dengan beberapa cabang. Cakupan risetnya disesuaikan dengan kebutuhan dan skala Anda.' },
-            { q: 'Bagaimana cara mulainya?', a: 'Isi form di atas atau hubungi kami via WhatsApp, ceritakan bisnis dan pertanyaan yang ingin dijawab. Kami akan diskusikan ruang lingkup dan biayanya sebelum riset dimulai.' },
-            { q: 'Data yang saya bagikan aman?', a: 'Ya. Laporan privat hanya bisa diakses oleh akun Anda di portal member, dan tidak dibagikan ke pihak lain.' },
-            { q: 'Selain laporan, apa lagi yang saya dapat?', a: 'Akses ke portal member berisi materi belajar marketing dan pembaruan riset ringan, di luar laporan privat yang Anda pesan.' },
-          ].map((faq, idx) => (
-            <div key={idx} className="border-b border-slate-100 last:border-none pb-3">
-              <button
-                onClick={() => toggleFaq(idx)}
-                className="w-full flex items-center justify-between py-3 text-left text-xs sm:text-sm font-semibold text-slate-800 hover:text-slate-900 transition-colors"
-              >
-                <span>{faq.q}</span>
-                <span className="text-slate-400 font-mono text-base pl-2">
-                  {openFaq === idx ? '−' : '+'}
-                </span>
-              </button>
-              {openFaq === idx && (
-                <p className="text-xs text-slate-600 font-light leading-relaxed pb-2 pl-1">
-                  {faq.a}
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
+  <div className="bg-white border border-slate-200 rounded-[32px] p-4 sm:p-6 md:p-8 shadow-sm space-y-3">
+    {[
+      {
+        q: 'Apa itu RECA?',
+        a: 'RECA adalah platform riset pasar dan marketing untuk pelaku usaha di Indonesia. Di dalamnya ada feed pembaruan pasar, RECA Letter, laporan riset, dan materi belajar marketing, supaya keputusan bisnis Anda berdasarkan data, bukan feeling.',
+      },
+      {
+        q: 'Siapa yang cocok memakai RECA?',
+        a: 'RECA fokus lebih dulu ke pelaku usaha F&B: kafe, restoran, katering, minuman, hingga produk makanan kemasan. Pelaku UMKM dari sektor lain juga boleh ikut, karena banyak pelajaran marketing dan pricing yang berlaku di semua jenis usaha.',
+      },
+      {
+        q: 'Bisnis saya masih kecil, apa tetap bisa pakai RECA?',
+        a: 'Bisa. RECA melayani mulai dari usaha rumahan yang baru mau buka, sampai bisnis dengan beberapa cabang. Cakupan risetnya disesuaikan dengan kebutuhan dan skala Anda.',
+      },
+      {
+        q: 'Apakah RECA gratis?',
+        a: 'Saat ini RECA masih dalam fase awal dan bisa dicoba gratis, termasuk request analisa singkat untuk usaha Anda. Kuota analisa terbatas supaya kualitasnya terjaga. Kami akan mengumumkan lebih dulu jika ada perubahan, jadi Anda tidak akan ditagih tanpa pemberitahuan.',
+      },
+      {
+        q: 'Bagaimana cara request analisa atau bedah usaha saya?',
+        a: 'Hubungi kami lewat WhatsApp, lalu ceritakan usaha Anda: jenis usaha, kota, sudah berapa lama berjalan, masalah terbesar saat ini, dan apa yang ingin dianalisa. Kami akan konfirmasi apakah masih ada slot dan kapan hasilnya bisa Anda terima.',
+      },
+      {
+        q: 'Berapa lama hasil analisa selesai?',
+        a: 'Tergantung antrean dan kompleksitas pertanyaan Anda. Untuk analisa singkat, kami usahakan memberi kabar jadwalnya saat konfirmasi di WhatsApp, supaya Anda tahu estimasinya dari awal.',
+      },
+      {
+        q: 'Data yang saya bagikan aman?',
+        a: 'Ya. Laporan privat hanya bisa diakses oleh akun Anda di portal member, dan tidak dibagikan ke pihak lain. Hasil analisa usaha Anda hanya dipakai sebagai contoh atau studi kasus jika Anda mengizinkannya.',
+      },
+      {
+        q: 'Selain laporan, apa lagi yang saya dapat?',
+        a: 'Akses ke portal member berisi RECA Letter, laporan riset, dan materi belajar marketing, di luar laporan privat yang Anda pesan. Anda juga bisa bergabung ke komunitas pelaku usaha untuk saling tanya dan berbagi pengalaman.',
+      },
+      {
+        q: 'Kalau nanti berbayar, apa yang akan dikenakan biaya?',
+        a: 'Fitur dasar dan analisa singkat masih bisa dinikmati sesuai ketentuan yang kami umumkan. Layanan yang lebih mendalam, seperti laporan privat dan konsultasi marketing, akan berbayar. Biayanya didiskusikan dan Anda setujui dulu sebelum riset dimulai.',
+      },
+    ].map((faq, idx) => (
+      <div key={idx} className="border-b border-slate-100 last:border-none pb-3">
+        <button
+          onClick={() => toggleFaq(idx)}
+          className="w-full flex items-center justify-between py-3 text-left text-xs sm:text-sm font-semibold text-slate-800 hover:text-slate-900 transition-colors"
+        >
+          <span>{faq.q}</span>
+          <span className="text-slate-400 font-mono text-base pl-2">
+            {openFaq === idx ? '−' : '+'}
+          </span>
+        </button>
+        {openFaq === idx && (
+          <p className="text-xs text-slate-600 font-light leading-relaxed pb-2 pl-1">
+            {faq.a}
+          </p>
+        )}
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* ========================================================= */}
       {/* 10. FOOTER SECTION */}
