@@ -35,7 +35,7 @@ export default function CoursesClient({ modules }: CoursesClientProps) {
       {/* Header */}
       <div className="bg-white border-b border-gray-200 px-6 py-5">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-xl font-display font-bold text-navy-900">Learning Center</h1>
+          <h1 className="text-xl font-display font-bold text-navy-900">Learning Center COOMING SOON</h1>
           <p className="text-sm text-gray-500 mt-0.5">Exclusive courses and resources for premium members.</p>
 
           {/* Tab switcher */}
