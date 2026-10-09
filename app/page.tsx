@@ -7,7 +7,7 @@ export default function LandingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   // WhatsApp Configuration
-  const whatsappNumber = '6281931655410'
+  const whatsappNumber = '6285864855878'
   const waText = (msg: string) => `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`
   const waDirect = waText('Halo Tim RECA, saya ingin konsultasi soal riset pasar untuk bisnis F&B saya.')
 
