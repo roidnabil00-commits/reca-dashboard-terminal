@@ -73,32 +73,41 @@ export default function LandingPage() {
         </header>
       </div>
 
-      {/* ========================================================= */}
-      {/* 2. HERO SECTION (100% FULL SCREEN / VIEWPORT HEIGHT) */}
-      {/* ========================================================= */}
-      <section className="min-h-[100dvh] flex flex-col justify-center items-center px-6 max-w-4xl md:max-w-5xl mx-auto text-center relative z-10 pt-20 pb-10">
-        
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
-          Jalankan Bisnis <span className="text-slate-400">Kalian</span> <br />
-          Berdasarkan Data, <br />
-          <span className="text-slate-400 font-light">Bukan Tebakan.</span>
-        </h1>
+    {/* ========================================================= */}
+{/* 2. HERO SECTION (100% FULL SCREEN / VIEWPORT HEIGHT) */}
+{/* ========================================================= */}
+<section className="min-h-[100dvh] flex flex-col justify-center items-center px-6 max-w-4xl md:max-w-5xl mx-auto text-center relative z-10 pt-20 pb-10">
 
-        <p className="mt-6 text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-xl md:max-w-2xl mx-auto font-light">
-          RECA membantu Anda melihat apa yang kompetitor tidak tunjukkan  posisi mereka, lokasi yang sesuai, dan strategi marketing yang sedang mereka jalankan.
-        </p>
+  {/* Tagline kecil */}
+  <p className="mb-5 inline-block rounded-full border border-slate-200 bg-white/70 px-4 py-1.5 text-[11px] sm:text-xs font-semibold tracking-wide text-slate-500 backdrop-blur">
+    Mereka yang eksperimen, Kita yang panen 💸
+  </p>
 
-        {/* Primary CTA Button */}
-        <div className="mt-10">
-          <a
-            href="#konsultasi"
-            className="inline-block px-8 py-3.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm tracking-wide transition-all shadow-xl shadow-slate-900/20 hover:scale-105"
-          >
-            Konsultasikan Bisnis Anda
-          </a>
-        </div>
+  <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
+    Contekan Bisnis <br className="sm:hidden" />
+    <span className="text-slate-400 font-light">No Ribet.</span>
+  </h1>
 
-      </section>
+  <p className="mt-6 text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-xl md:max-w-2xl mx-auto font-light">
+    Kami bongkar strategi marketing dan bisnis brand yang sudah jalan melalui riset,
+    analisis kompetitor, dan studi kasus, agar keputusan usahamu berdasarkan data,
+    bukan feeling.
+  </p>
+
+  {/* Primary CTA Button */}
+  <div className="mt-10 flex flex-col items-center gap-3">
+    <a
+      href="#konsultasi"
+      className="inline-block px-8 py-3.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm tracking-wide transition-all shadow-xl shadow-slate-900/20 hover:scale-105"
+    >
+      Join Now (Gratis)
+    </a>
+    <span className="text-[11px] sm:text-xs text-slate-400 font-light">
+      Slot gratis terbatas selama fase awal
+    </span>
+  </div>
+
+</section>
 
       {/* ========================================================= */}
       {/* 3. DIBANGUN OLEH / AUTHORITY CARD */}
@@ -159,146 +168,223 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ========================================================= */}
-      {/* 5. WHAT YOU WILL GET (MEMBERSHIP PILARS) */}
-      {/* ========================================================= */}
-      <section id="fitur" className="px-4 max-w-2xl md:max-w-5xl lg:max-w-6xl mx-auto mb-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pl-2 gap-4">
-          <div>
-            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-[0.25em]">MEMBERSHIP</span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">
-              Apa yang akan Anda <span className="text-slate-400 font-light">dapatkan?</span>
-            </h2>
-          </div>
-          <a
-            href="#konsultasi"
-            className="inline-block px-6 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-all shadow-md shadow-slate-900/10 w-fit"
-          >
-            Konsultasikan Bisnis Anda
-          </a>
+  {/* ========================================================= */}
+{/* 5. WHAT YOU WILL GET (MEMBERSHIP PILARS) */}
+{/* ========================================================= */}
+<section id="fitur" className="px-4 max-w-2xl md:max-w-5xl lg:max-w-6xl mx-auto mb-8">
+  <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pl-2 gap-4">
+    <div>
+      <span className="text-[10px] font-mono text-slate-400 uppercase tracking-[0.25em]">MEMBERSHIP</span>
+      <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">
+        Apa yang bakal kamu <span className="text-slate-400 font-light">dapetin?</span>
+      </h2>
+    </div>
+    <a
+      href="#konsultasi"
+      className="inline-block px-6 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-all shadow-md shadow-slate-900/10 w-fit"
+    >
+      Request Bedah Usahamu (Gratis)
+    </a>
+  </div>
+
+  {/* Responsive Grid Desktop: 3 Kolom / 2 Kolom */}
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    {/* Feature 01 - Research Library */}
+    <div className="bg-white border border-slate-200 rounded-[28px] p-6 shadow-sm flex flex-col justify-between">
+      <div>
+        <span className="text-xs font-mono text-slate-400 font-bold">01</span>
+        <h3 className="text-lg font-bold text-slate-900 mt-1">Contekan Strategi Brand</h3>
+        <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
+          Kami bedah strategi marketing brand yang sudah jalan, dari cerita, harga, sampai cara mereka dekat dengan pelanggan. Kamu tinggal ambil polanya.
+        </p>
+      </div>
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 space-y-2 mt-auto">
+        <div className="flex items-center justify-between mb-1">
+          <span className="text-[11px] font-mono font-semibold text-slate-500">RESEARCH LIBRARY</span>
+          <span className="text-[10px] px-2 py-0.5 rounded-full bg-white border border-slate-200 text-slate-600 font-medium">9 laporan</span>
         </div>
-
-        {/* Responsive Grid Desktop: 3 Kolom / 2 Kolom */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          {/* Feature 01 */}
-          <div className="bg-white border border-slate-200 rounded-[28px] p-6 shadow-sm flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-mono text-slate-400 font-bold">01</span>
-              <h3 className="text-lg font-bold text-slate-900 mt-1">Analisa Kompetitor</h3>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
-                Sebelum modal keluar, kami petakan siapa pemain di sekitar lokasi Anda  konsep, harga, dan celah yang belum digarap.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 mt-auto">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-mono font-semibold text-slate-500">RECA REPORT</span>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-white border border-slate-200 text-slate-600 font-medium">Radius 1 km</span>
-              </div>
-              <p className="text-xs text-slate-900 font-semibold">Kompetitor Sejenis</p>
-              <p className="text-2xl font-bold text-slate-900 mt-0.5">7 tempat</p>
-              <p className="text-[11px] text-slate-500 mt-1">4 buka dalam 6 bulan terakhir</p>
-            </div>
-          </div>
-
-          {/* Feature 02 */}
-          <div className="bg-white border border-slate-200 rounded-[28px] p-6 shadow-sm flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-mono text-slate-400 font-bold">02</span>
-              <h3 className="text-lg font-bold text-slate-900 mt-1">Analisa Lokasi</h3>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
-                Bandingkan beberapa titik di sekitar anda berdasarkan traffic, kepadatan kompetitor, dan kecocokan dengan konsep bisnis Anda.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 grid grid-cols-2 gap-3 mt-auto">
-              <div>
-                <p className="text-[11px] text-slate-500 mb-1">Jam tersepi</p>
-                <p className="text-lg font-bold text-slate-900">14–16</p>
-              </div>
-              <div className="border-l border-slate-200 pl-3">
-                <p className="text-[11px] text-slate-500 mb-1">Celah pasar</p>
-                <p className="text-lg font-bold text-slate-900">Terdeteksi</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Feature 03 */}
-          <div className="bg-white border border-slate-200 rounded-[28px] p-6 shadow-sm flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-mono text-slate-400 font-bold">03</span>
-              <h3 className="text-lg font-bold text-slate-900 mt-1">Riset Campaign Marketing Kompetitor</h3>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
-                Kami rangkum promo, akun, channel, konten dan campaign yang sedang berjalan  supaya strategi Anda tidak jalan buta.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 space-y-2 mt-auto">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-800 font-medium">Promo bundling akhir pekan</span>
-                <span className="text-slate-500 font-mono">Aktif</span>
-              </div>
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-800 font-medium">Kolaborasi micro-influencer</span>
-                <span className="text-slate-500 font-mono">2 mgg lalu</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Feature 04 */}
-          <div className="bg-white border border-slate-200 rounded-[28px] p-6 shadow-sm flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-mono text-slate-400 font-bold">04</span>
-              <h3 className="text-lg font-bold text-slate-900 mt-1">Laporan Privat Sesuai Kebutuhan</h3>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
-                Riset kustom yang disesuaikan dengan pertanyaan spesifik bisnis Anda, disusun jadi laporan siap dibaca dan dipakai.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 mt-auto">
-              <p className="text-[11px] text-slate-500 mb-2">Status laporan Anda</p>
-              <div className="h-2 rounded-full bg-slate-200 overflow-hidden">
-                <div className="h-full w-full bg-slate-900" />
-              </div>
-              <p className="text-[11px] text-slate-500 mt-2 font-medium">Siap dibagikan ke tim Anda</p>
-            </div>
-          </div>
-
-          {/* Feature 05 */}
-          <div className="bg-white border border-slate-200 rounded-[28px] p-6 shadow-sm flex flex-col justify-between md:col-span-2 lg:col-span-1">
-            <div>
-              <span className="text-xs font-mono text-slate-400 font-bold">05</span>
-              <h3 className="text-lg font-bold text-slate-900 mt-1">Materi Belajar Gratis</h3>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
-                Akses modul marketing praktis di portal member  untuk membekali Anda di luar laporan yang Anda pesan.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 mt-auto">
-              <p className="text-xs text-slate-900 font-semibold">Marketing In This Economy</p>
-              <p className="text-[11px] text-slate-500 mt-1">class & modul · gratis untuk semua member</p>
-            </div>
-          </div>
-
+        <div className="flex items-center justify-between text-xs">
+          <span className="text-slate-800 font-medium">Menjual Cerita</span>
+          <span className="text-slate-500 font-mono">Storytelling</span>
         </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* 6. STUDI KASUS SECTION */}
-      {/* ========================================================= */}
-      <section className="px-4 max-w-2xl md:max-w-5xl mx-auto mb-8">
-        <div className="bg-white border border-slate-200 rounded-[32px] p-6 sm:p-8 shadow-sm">
-          <span className="text-[10px] font-mono text-slate-400 uppercase tracking-[0.25em] font-bold block mb-2">STUDI KASUS</span>
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
-            Riset kompetitor profesional
-          </h2>
-          <div className="mt-4 p-5 rounded-2xl bg-slate-50 border border-slate-200">
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
-              "Kami memetakan kompetitor terdekat, membandingkan harga menu dan jam ramai, lalu menunjukkan celah yang belum digarap siapa pun di sekitar lokasi."
-            </p>
-            <p className="text-[11px] text-slate-400 mt-3 font-mono">
-               Nama klien dirahasiakan sesuai kesepakatan privasi.
-            </p>
-          </div>
+        <div className="flex items-center justify-between text-xs">
+          <span className="text-slate-800 font-medium">Numpang Nama</span>
+          <span className="text-slate-500 font-mono">Strategi nama</span>
         </div>
-      </section>
+      </div>
+    </div>
 
+    {/* Feature 02 - RECA Letter */}
+    <div className="bg-white border border-slate-200 rounded-[28px] p-6 shadow-sm flex flex-col justify-between">
+      <div>
+        <span className="text-xs font-mono text-slate-400 font-bold">02</span>
+        <h3 className="text-lg font-bold text-slate-900 mt-1">RECA Letter</h3>
+        <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
+          Tulisan singkat soal taktik marketing dan psikologi jualan yang bisa langsung kamu coba di usahamu, tanpa bahasa yang ribet.
+        </p>
+      </div>
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 mt-auto">
+        <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-medium">RECA Letter</span>
+        <p className="text-xs text-slate-900 font-semibold mt-2 leading-snug">
+          Bikin harga "mahal" terasa murah: Anchoring Effect
+        </p>
+        <p className="text-[11px] text-slate-500 mt-1">Baca di portal member</p>
+      </div>
+    </div>
+
+    {/* Feature 03 - Kompetitor & Lokasi */}
+    <div className="bg-white border border-slate-200 rounded-[28px] p-6 shadow-sm flex flex-col justify-between">
+      <div>
+        <span className="text-xs font-mono text-slate-400 font-bold">03</span>
+        <h3 className="text-lg font-bold text-slate-900 mt-1">Analisa Kompetitor & Lokasi</h3>
+        <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
+          Petakan siapa pemain di sekitar usahamu: konsep, harga, dan celah yang belum digarap, biar nggak keluar modal sambil nebak-nebak.
+        </p>
+      </div>
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 mt-auto">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-[11px] font-mono font-semibold text-slate-500">CONTOH TAMPILAN</span>
+          <span className="text-[10px] px-2 py-0.5 rounded-full bg-white border border-slate-200 text-slate-600 font-medium">Radius 1 km</span>
+        </div>
+        <p className="text-xs text-slate-900 font-semibold">Kompetitor Sejenis</p>
+        <p className="text-2xl font-bold text-slate-900 mt-0.5">7 tempat</p>
+        <p className="text-[11px] text-slate-500 mt-1">4 buka dalam 6 bulan terakhir</p>
+      </div>
+    </div>
+
+    {/* Feature 04 - Campaign Kompetitor */}
+    <div className="bg-white border border-slate-200 rounded-[28px] p-6 shadow-sm flex flex-col justify-between">
+      <div>
+        <span className="text-xs font-mono text-slate-400 font-bold">04</span>
+        <h3 className="text-lg font-bold text-slate-900 mt-1">Intip Campaign Kompetitor</h3>
+        <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
+          Kami rangkum promo, akun, channel, dan konten yang sedang mereka jalankan, supaya strategimu nggak jalan buta.
+        </p>
+      </div>
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 space-y-2 mt-auto">
+        <span className="text-[11px] font-mono font-semibold text-slate-500 block mb-1">CONTOH TAMPILAN</span>
+        <div className="flex items-center justify-between text-xs">
+          <span className="text-slate-800 font-medium">Promo bundling akhir pekan</span>
+          <span className="text-slate-500 font-mono">Aktif</span>
+        </div>
+        <div className="flex items-center justify-between text-xs">
+          <span className="text-slate-800 font-medium">Kolaborasi micro-influencer</span>
+          <span className="text-slate-500 font-mono">2 mgg lalu</span>
+        </div>
+      </div>
+    </div>
+
+    {/* Feature 05 - Bedah by Request */}
+    <div className="bg-white border border-slate-200 rounded-[28px] p-6 shadow-sm flex flex-col justify-between">
+      <div>
+        <span className="text-xs font-mono text-slate-400 font-bold">05</span>
+        <h3 className="text-lg font-bold text-slate-900 mt-1">Bedah Usahamu (By Request)</h3>
+        <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
+          Ceritakan masalah usahamu, kami analisa sesuai pertanyaanmu. Gratis di fase awal dengan slot terbatas. Butuh yang lebih dalam? Laporan privat dan konsultasi tersedia berbayar.
+        </p>
+      </div>
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 mt-auto">
+        <p className="text-[11px] text-slate-500 mb-3">Alur request</p>
+        <div className="flex items-center justify-between text-[11px] font-medium text-slate-700">
+          <span className="px-2.5 py-1 rounded-full bg-white border border-slate-200">Kirim</span>
+          <span className="text-slate-300">→</span>
+          <span className="px-2.5 py-1 rounded-full bg-white border border-slate-200">Dianalisa</span>
+          <span className="text-slate-300">→</span>
+          <span className="px-2.5 py-1 rounded-full bg-slate-900 text-white">Hasil</span>
+        </div>
+      </div>
+    </div>
+
+    {/* Feature 06 - Materi Belajar */}
+    <div className="bg-white border border-slate-200 rounded-[28px] p-6 shadow-sm flex flex-col justify-between">
+      <div>
+        <span className="text-xs font-mono text-slate-400 font-bold">06</span>
+        <h3 className="text-lg font-bold text-slate-900 mt-1">Materi Belajar Gratis</h3>
+        <p className="text-xs text-slate-600 mt-2 leading-relaxed font-light mb-4">
+          Akses modul marketing praktis di portal member, buat bekal kamu di luar analisa yang kamu request.
+        </p>
+      </div>
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 mt-auto">
+        <p className="text-xs text-slate-900 font-semibold">Marketing In This Economy</p>
+        <p className="text-[11px] text-slate-500 mt-1">15 modul · gratis untuk semua member</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+     {/* ========================================================= */}
+{/* 6. STUDI KASUS SECTION */}
+{/* ========================================================= */}
+<section className="px-4 max-w-2xl md:max-w-5xl mx-auto mb-8">
+  <div className="bg-white border border-slate-200 rounded-[32px] p-6 sm:p-8 shadow-sm">
+    <span className="text-[10px] font-mono text-slate-400 uppercase tracking-[0.25em] font-bold block mb-2">STUDI KASUS</span>
+    <h2 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+      Strategi nyata yang kami bedah
+    </h2>
+    <p className="mt-2 text-xs sm:text-sm text-slate-500 font-light max-w-2xl">
+      Dari bedah usaha sampai riset brand yang sudah jalan. Ambil polanya, sesuaikan dengan usahamu.
+    </p>
+
+    <div className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+      {[
+        {
+          tag: 'BEDAH USAHA',
+          title: 'Riset kompetitor profesional',
+          body: 'Kami memetakan kompetitor terdekat, membandingkan harga menu dan jam ramai, lalu menunjukkan celah yang belum digarap siapa pun di sekitar lokasi.',
+          foot: 'Nama klien dirahasiakan sesuai kesepakatan privasi.',
+          quote: true,
+        },
+        {
+          tag: 'STORYTELLING',
+          title: 'Mencontoh Si Petek: dari ikan limbah jadi brand rakyat',
+          body: 'Cerita pemberdayaan bisa jadi alasan orang memilih sebuah produk, bukan cuma soal rasa atau harga.',
+          foot: 'Sumber: RECA Research Library',
+        },
+        {
+          tag: 'KISAH BRAND',
+          title: 'Nurhayati Subakat dan Paragon: cerita yang tetap hidup',
+          body: 'Kisah pendiri yang otentik bisa jadi aset jangka panjang, karena orang mengingat cerita lebih lama daripada iklan.',
+          foot: 'Sumber: RECA Research Library',
+        },
+        {
+          tag: 'WHATSAPP',
+          title: 'Masuk sampai ke hati lewat WhatsApp',
+          body: 'Pesan yang personal dan terasa emosional di kanal chat membangun kedekatan dengan pelanggan lebih dalam dari broadcast biasa.',
+          foot: 'Sumber: RECA Research Library',
+        },
+        {
+          tag: 'NUMPANG NAMA',
+          title: 'Bumbu instan yang numpang audiens 150 ribu followers',
+          body: 'Kadang pertumbuhan awal datang dari memanfaatkan audiens yang sudah ada, bukan membangun semuanya dari nol.',
+          foot: 'Sumber: RECA Research Library',
+        },
+        {
+          tag: 'KOMPETITOR',
+          title: 'Nyontek kompetitor, temukan inovasi produk yang laku',
+          body: 'Mengamati kompetitor secara sistematis menunjukkan celah produk dan inovasi yang sudah terbukti diminati pasar.',
+          foot: 'Sumber: RECA Research Library',
+        },
+      ].map((c, idx) => (
+        <div
+          key={idx}
+          className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col"
+        >
+          <span className="text-[10px] font-mono text-slate-400 uppercase tracking-[0.2em] font-bold">
+            {c.tag}
+          </span>
+          <h3 className="mt-2 text-sm sm:text-base font-bold text-slate-900 leading-snug">
+            {c.title}
+          </h3>
+          <p className={`mt-3 text-xs sm:text-sm text-slate-700 leading-relaxed ${c.quote ? 'italic' : ''}`}>
+            {c.quote ? `"${c.body}"` : c.body}
+          </p>
+          <p className="text-[11px] text-slate-400 mt-auto pt-3 font-mono">{c.foot}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
       {/* ========================================================= */}
       {/* 7. FILTERING QUALIFICATION CARD */}
       {/* ========================================================= */}
@@ -333,7 +419,7 @@ export default function LandingPage() {
               <p className="text-[11px] font-mono tracking-widest text-slate-500 font-bold mb-3 uppercase">RECA COCOK JIKA ANDA</p>
               <ul className="space-y-3 text-xs sm:text-sm text-slate-800">
                 {[
-                  'Sedang merencanakan atau menjalankan bisnis F&B.',
+                  'Sedang merencanakan atau menjalankan bisnis Ritel & Fnb.',
                   'Mau keputusan lokasi & marketing berbasis data.',
                   'Terbuka pada temuan yang mungkin di luar dugaan Anda.'
                 ].map((text, idx) => (
@@ -385,7 +471,7 @@ export default function LandingPage() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1.5" htmlFor="kebutuhan">Yang ingin dikonsultasikan</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5" htmlFor="kebutuhan">Apa yang bisnis kamu butuhkan?</label>
                 <textarea
                   id="kebutuhan" required rows={3} value={form.kebutuhan} onChange={updateForm('kebutuhan')}
                   placeholder="Misal: analisa kompetitor sebelum buka cabang baru di Bandung"
